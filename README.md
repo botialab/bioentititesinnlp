@@ -96,3 +96,25 @@ nextflow run E0.nf
 No more tweaks are needed, as it just only works for the species entity in a pre-defined enviorment. 
 
 ### EE-Bert-T5
+
+This last experiment tries a different transformer approach, focusing on the semantic knowledge of them. Using [Sentence Transformers](https://www.sbert.net/), we can detect which label of a said entity is closest to a question, if any. This is done using embeddings and cosine similarity. With sentence transformers, the embeddings are created by pooling the encoder output of the transformer. The next diagram shows the process:
+
+![EE-BERT-T5 DFD](/images/EE_BERT_T5_DFD.png)
+
+Overall, it shares the main architecture as the last experiment, but it has some modifications so that questions can be created from any entity present in the ontolgy. Instead of the fine-tuned BERT, a model is evaluated with Top 1, 3 and 5 accuraccy in the created dataset. A filter is also designed, so that any question that is over 2 Standard Errors from the mean Cosine Similary with its question is discarde. This filter tries to tackle the low quality of some questions. It will prove to be useful but better semantic filters will be created in later upgrades. 
+
+#### Usage Tutorial
+
+When executing the nextflow command, you have the following parameters:
+1. entity: This parameter specifies the name of the folder in which the values are stored
+of the entity and other files.
+2. kv: kv or keyword, is the name of the ontology class from which to extract information.
+3. model: specifies the model to use, the values are ”bert” or ”t5”.
+4. finetune: this parameter can be activated with yes, in which case the program searches for a model
+trained with model adaptation to use.
+
+For instance:
+
+```
+nextflow run E1.nf –entity Specie –kw Specie –model bert –finetune yes
+```
