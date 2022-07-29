@@ -101,12 +101,6 @@ for ds in dataset.keys():
           output_path=model_save_path)
 
 
-    ##############################################################################
-    #
-    # Load the stored model and evaluate its performance on STS benchmark dataset
-    #
-    ##############################################################################
-
     model = SentenceTransformer(model_save_path)
     test_evaluator = EmbeddingSimilarityEvaluator.from_input_examples(test_samples, name='biomed-questions-test')
     test_evaluator(model, output_path=model_save_path)
