@@ -21,6 +21,8 @@ This is part of a large biomedical workflow, which tries to solve natural langua
 
 It is worth mentioning that this experiments are made under an unified framework called Nextlow. This provide a clear pipeline to divide de experiment in independent processes that comunicate with channels. The tool makes the experiemnts portable, reproducible and easy to follow. 
 
+The process also uses an ontology as its main source of information. The project tries to link the symbolic world of ontology with the neural network world. This is a biological ontology that contains related terms and singlecell projects.
+
 ## Initial Set-Up
 
 Even if the project is meant to be portable, it needs some programs to run the workflow. 
@@ -118,3 +120,22 @@ For instance:
 ```
 nextflow run E1.nf –entity Specie –kw Specie –model bert –finetune yes
 ```
+
+#### Upgrades
+
+This experiment underwent some iterations to achieve a better quality dataset and performing model.
+
+Dataset Quality:
+
+- Semantic Similarity Filter.
+- Better Pubmed Queries
+
+
+Model Performance:
+
+- Use of specific biological models
+- Fine Tuning with Siamese Nextworks
+- Multi-Entity Fine Tuning
+
+These can be found on the repository, as well as a streamlit app to prove the usage. To use it, install the [streamlit package](https://streamlit.io/) and run it as a regular streamlit app. 
+
