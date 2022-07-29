@@ -2,7 +2,7 @@ from owlready2 import *
 from owlready2 import get_ontology
 import pandas as pd
 
-#------------ Ontologia ------------#
+#------------ Ontologia -------------#
 
 df = pd.read_csv("questions_ents.csv")
 
